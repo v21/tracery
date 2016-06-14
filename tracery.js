@@ -775,6 +775,15 @@ var tracery = function() {
             return s.charAt(0).toUpperCase() + s.substring(1);
         },
 
+        uppercase : function(s) {
+            return s.toUpperCase();
+        },
+
+        lowercase : function(s) {
+            return s.toLowerCase();
+
+        },
+
         a : function(s) {
             if (s.length > 0) {
                 if (s.charAt(0).toLowerCase() === 'u') {
@@ -849,7 +858,7 @@ var tracery = function() {
         }
     };
 
-    tracery.baseEngModifiers = baseEngModifiers; 
+    tracery.baseEngModifiers = baseEngModifiers;
     // Externalize
     tracery.TraceryNode = TraceryNode;
 
@@ -859,4 +868,4 @@ var tracery = function() {
     return tracery;
 }();
 
-module.exports = tracery; 
+module.exports = tracery;
