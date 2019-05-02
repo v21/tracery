@@ -3,6 +3,11 @@
  */
 
 var tracery = function() {
+    var random = Math.random;
+
+    function setRandom(newRandom) {
+        random = newRandom;
+    }
 
     var TraceryNode = function(parent, childIndex, settings) {
         this.errors = [];
@@ -362,7 +367,7 @@ var tracery = function() {
                 break;
             default:
 
-                index = Math.floor(Math.pow(Math.random(), this.falloff) * this.defaultRules.length);
+                index = Math.floor(Math.pow(random(), this.falloff) * this.defaultRules.length);
                 break;
             }
 
@@ -393,7 +398,7 @@ var tracery = function() {
         while (0 !== currentIndex) {
 
             // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
+            randomIndex = Math.floor(random() * currentIndex);
             currentIndex -= 1;
 
             // And swap it with the current element.
@@ -575,6 +580,8 @@ var tracery = function() {
         createGrammar : function(raw) {
             return new Grammar(raw);
         },
+
+        setRandom: setRandom,
 
         // Parse the contents of a tag
         parseTag : function(tagContents) {
@@ -858,4 +865,4 @@ var tracery = function() {
     return tracery;
 }();
 
-module.exports = tracery; 
+module.exports = tracery;
