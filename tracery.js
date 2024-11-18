@@ -3,6 +3,11 @@
  */
 
 var tracery = function() {
+    var rng = Math.random;
+
+    var setRng = function setRng(newRng) {
+        rng = newRng;
+    }
 
     var TraceryNode = function(parent, childIndex, settings) {
         this.errors = [];
@@ -362,7 +367,7 @@ var tracery = function() {
                 break;
             default:
 
-                index = Math.floor(Math.pow(Math.random(), this.falloff) * this.defaultRules.length);
+                index = Math.floor(Math.pow(rng(), this.falloff) * this.defaultRules.length);
                 break;
             }
 
@@ -393,7 +398,7 @@ var tracery = function() {
         while (0 !== currentIndex) {
 
             // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
+            randomIndex = Math.floor(rng() * currentIndex);
             currentIndex -= 1;
 
             // And swap it with the current element.
@@ -855,6 +860,9 @@ var tracery = function() {
     tracery.Grammar = Grammar;
     tracery.Symbol = Symbol;
     tracery.RuleSet = RuleSet;
+
+    tracery.setRng = setRng;
+
     return tracery;
 }();
 
